@@ -9,11 +9,11 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name: Checkout GemstoneGG feature/folia
+      - name: Checkout Lophine 26.3 compatibility branch
         uses: actions/checkout@v7
         with:
-          repository: GemstoneGG/FastAsyncWorldEdit-Folia
-          ref: feature/folia
+          repository: ColdTearsYY/FastAsyncWorldEdit-Folia
+          ref: compat/lophine-26.3
 
       - name: Setup Java
         uses: actions/setup-java@v6
@@ -28,6 +28,6 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: FastAsyncWorldEdit-Paper-jars
+          name: FastAsyncWorldEdit-Paper-lophine-26.3
           path: worldedit-bukkit/build/libs/FastAsyncWorldEdit-Paper-*.jar
           retention-days: 7
