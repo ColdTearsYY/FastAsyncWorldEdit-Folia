@@ -29,7 +29,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 
 public class PaperweightBlockMaterial extends BukkitBlockMaterial<Block, BlockState> {
@@ -70,7 +69,9 @@ public class PaperweightBlockMaterial extends BukkitBlockMaterial<Block, BlockSt
 
     @Override
     public boolean isLiquid() {
-        return !this.blockState.getFluidState().is(Fluids.EMPTY);
+        // Lophine 26.3 inherits is(Object) from TypedInstance instead of declaring is(Fluid).
+        // isEmpty() has the same meaning here and retains a stable descriptor on both platforms.
+        return !this.blockState.getFluidState().isEmpty();
     }
 
     @Override
