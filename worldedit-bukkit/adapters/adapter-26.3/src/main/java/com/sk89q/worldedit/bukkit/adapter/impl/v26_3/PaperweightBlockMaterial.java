@@ -70,7 +70,7 @@ public class PaperweightBlockMaterial extends BukkitBlockMaterial<Block, BlockSt
     @Override
     public boolean isLiquid() {
         // Lophine 26.3 inherits is(Object) from TypedInstance instead of declaring is(Fluid).
-        // isEmpty() has the same meaning here and retains a stable descriptor on both platforms.
+        // isEmpty() keeps fluid detection compatible with its runtime descriptor.
         return !this.blockState.getFluidState().isEmpty();
     }
 
